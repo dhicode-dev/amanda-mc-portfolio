@@ -12,41 +12,91 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; }
-        /* Warna Utama dari Gambar Rate Card */
-        .bg-forest { background-color: #2D5A27; }
-        .text-rate-yellow { color: #F6E05E; }
-        .bg-rate-yellow { background-color: #F6E05E; }
-        #mainNav { transition: all 0.4s ease-in-out; }
-        /* Swiper Custom */
-        .swiper-button-next, .swiper-button-prev {
-            color: #2D5A27 !important; /* Hijau Tua */
-            background: #F6E05E; /* Kuning Muda */
-            width: 35px !important;
-            height: 35px !important;
-            border-radius: 50%;
+    /* 1. Reset & Global Stability */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    html, body {
+        width: 100%;
+        overflow-x: hidden; /* Anti bocor kanan di HP */
+        scroll-behavior: smooth;
+    }
+
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, .brand { font-family: 'Playfair Display', serif; }
+
+    /* 2. Color Palette */
+    .bg-forest { background-color: #2D5A27; }
+    .text-rate-yellow { color: #F6E05E; }
+    .bg-rate-yellow { background-color: #F6E05E; }
+    #mainNav { transition: all 0.4s ease-in-out; }
+
+    /* 3. Swiper Custom UI */
+    .swiper-button-next, .swiper-button-prev {
+        color: #2D5A27 !important;
+        background: #F6E05E;
+        width: 35px !important;
+        height: 35px !important;
+        border-radius: 50%;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after { font-size: 14px !important; }
+
+    /* 4. Rate Card Logic & Animation */
+    .tab-btn.active {
+        color: #2D5A27; 
+        border-bottom: 2px solid #2D5A27;
+        font-weight: 700;
+    }
+    .rate-card-content { display: none; }
+    .rate-card-content.active { display: block; animation: fadeIn 0.5s ease; }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .rate-card-bg {
+        background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('assets/img/ratecard-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    /* 5. FANCYBOX UI FIX (Agar tombol X muncul jelas di HP) */
+    .f-button.is-close-btn {
+        --f-button-width: 48px;
+        --f-button-height: 48px;
+        --f-button-color: #ffffff;
+        --f-button-bg: rgba(45, 90, 39, 0.9); /* Pakai hijau forest agar senada */
+        border-radius: 50%;
+        top: 20px !important;
+        right: 20px !important;
+        opacity: 1 !important;
+        z-index: 99999;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* 6. Responsive Mobile Fixes */
+    @media screen and (max-width: 375px) {
+        .booking-button, .ratecard-button {
+            width: 100%;
+            max-width: 250px;
+            font-size: 14px;
+            white-space: normal;
+            height: auto;
+            padding: 10px 15px;
         }
-        .swiper-button-next:after, .swiper-button-prev:after { font-size: 14px !important; }
-        /* Rate Card Tab Active Style */
-        .tab-btn.active {
-            color: #2D5A27; 
-            border-bottom: 2px solid #2D5A27;
-            font-weight: 700;
+        
+        /* Perkecil font nama Amanda di layar sangat kecil agar tidak overload */
+        h1 span.block.text-7xl {
+            font-size: 4rem;
+            line-height: 1;
         }
-        .rate-card-content { display: none; }
-        .rate-card-content.active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .rate-card-bg {
-            background: linear-gradient(rgba(45, 90, 39, 0.8), rgba(45, 90, 39, 0.8)), url('assets/img/ratecard-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-    </style>
+    }
+</style>
 </head>
 <body class="bg-gray-50 text-gray-800 overflow-x-hidden">
     <nav class="fixed w-full z-50 px-6 py-5 bg-forest" id="mainNav">
@@ -362,6 +412,7 @@
                 </div>
             </div>
         </div>
+
         <div class="max-w-4xl mx-auto">
             <div class="flex flex-col items-center" data-aos="fade-up">  
                 <div class="relative mb-8">
@@ -370,33 +421,74 @@
                         <i class="fas fa-microphone-alt text-5xl text-[#F6E05E]"></i>
                     </div>
                 </div>
-                <div class="bg-[#2D5A27]/5 rounded-full px-8 py-2 mb-10 border border-[#2D5A27]/10 shadow-sm">
-                    <span class="text-[#2D5A27] font-bold uppercase text-xs tracking-[0.2em]">Master of Ceremony Testimonials</span>
+
+                <div class="bg-[#2D5A27]/5 rounded-full px-8 py-2 mb-10 border border-[#2D5A27]/10 shadow-sm text-center">
+                    <span class="text-[#2D5A27] font-bold uppercase text-[10px] md:text-xs tracking-[0.2em]">Master of Ceremony Testimonials</span>
                 </div>
-                <div class="w-full max-w-[500px] relative">
-                    <div class="swiper innerSwiper rounded-[2rem] shadow-2xl border-[6px] border-[#2D5A27] overflow-hidden bg-gray-50">
+
+                <div class="w-full max-w-[500px] px-2 md:px-0 relative">
+                    <div class="swiper innerSwiper rounded-[2rem] shadow-2xl border-[4px] md:border-[6px] border-[#2D5A27] overflow-hidden bg-gray-50">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni1.png" class="w-full h-auto block" alt="Testimoni MC"></div>
-                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni2.png" class="w-full h-auto block" alt="Testimoni MC"></div>
-                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni3.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
-                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni4.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
-                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni5.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
-                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni6.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
-                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni7.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
-                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni8.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
+                            <div class="swiper-slide">
+                                <a href="assets/img/testimoni/testimoni1.png" data-fancybox="gallery-testi" class="block w-full aspect-square overflow-hidden cursor-zoom-in">
+                                    <img src="assets/img/testimoni/testimoni1.png" class="w-full h-full object-cover" alt="Testimoni MC">
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="assets/img/testimoni/testimoni2.png" data-fancybox="gallery-testi" class="block w-full aspect-square overflow-hidden cursor-zoom-in">
+                                    <img src="assets/img/testimoni/testimoni2.png" class="w-full h-full object-cover" alt="Testimoni MC">
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="assets/img/testimoni/testimoni3.png" data-fancybox="gallery-testi" class="block w-full aspect-square overflow-hidden cursor-zoom-in">
+                                    <img src="assets/img/testimoni/testimoni3.png" class="w-full h-full object-cover" alt="Testimoni MC">
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="assets/img/testimoni/testimoni4.png" data-fancybox="gallery-testi" class="block w-full aspect-square overflow-hidden cursor-zoom-in">
+                                    <img src="assets/img/testimoni/testimoni4.png" class="w-full h-full object-cover" alt="Testimoni MC">
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="assets/img/testimoni/testimoni5.png" data-fancybox="gallery-testi" class="block w-full aspect-square overflow-hidden cursor-zoom-in">
+                                    <img src="assets/img/testimoni/testimoni5.png" class="w-full h-full object-cover" alt="Testimoni MC">
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="assets/img/testimoni/testimoni6.png" data-fancybox="gallery-testi" class="block w-full aspect-square overflow-hidden cursor-zoom-in">
+                                    <img src="assets/img/testimoni/testimoni6.png" class="w-full h-full object-cover" alt="Testimoni MC">
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="assets/img/testimoni/testimoni7.png" data-fancybox="gallery-testi" class="block w-full aspect-square overflow-hidden cursor-zoom-in">
+                                    <img src="assets/img/testimoni/testimoni7.png" class="w-full h-full object-cover" alt="Testimoni MC">
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="assets/img/testimoni/testimoni8.png" data-fancybox="gallery-testi" class="block w-full aspect-square overflow-hidden cursor-zoom-in">
+                                    <img src="assets/img/testimoni/testimoni8.png" class="w-full h-full object-cover" alt="Testimoni MC">
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="assets/img/testimoni/testimoni9.png" data-fancybox="gallery-testi" class="block w-full aspect-square overflow-hidden cursor-zoom-in">
+                                    <img src="assets/img/testimoni/testimoni9.png" class="w-full h-full object-cover" alt="Testimoni MC">
+                                </a>
+                            </div>
                         </div>
-                        <div class="swiper-button-next !text-white !scale-75 bg-[#2D5A27]/50 hover:bg-[#2D5A27] rounded-full !w-10 !h-10 !after:text-sm transition-all"></div>
-                        <div class="swiper-button-prev !text-white !scale-75 bg-[#2D5A27]/50 hover:bg-[#2D5A27] rounded-full !w-10 !h-10 !after:text-sm transition-all"></div>
-                        <div class="swiper-pagination !-bottom-2"></div>
+                        
+                        <div class="swiper-button-next !text-white !scale-75 bg-[#2D5A27]/50 hover:bg-[#2D5A27] rounded-full !w-10 !h-10 transition-all"></div>
+                        <div class="swiper-button-prev !text-white !scale-75 bg-[#2D5A27]/50 hover:bg-[#2D5A27] rounded-full !w-10 !h-10 transition-all"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
+
                 <a href="https://www.youtube.com/shorts/P-Leedf-_eU" target="_blank" class="mt-12 flex items-center gap-4 group bg-gray-50 px-6 py-3 rounded-2xl hover:bg-gray-100 transition-all">
                     <div class="w-12 h-12 bg-[#2D5A27] text-[#F6E05E] rounded-full flex items-center justify-center group-hover:scale-110 transition shadow-lg">
                         <i class="fab fa-youtube text-xl"></i>
                     </div>
                     <div class="flex flex-col">
                         <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Watch on YouTube</span>
-                        <span class="text-sm font-bold text-[#2D5A27] tracking-wide">VIDEO PERFORMANCE & REVIEW</span>
+                        <span class="text-sm font-bold text-[#2D5A27] tracking-wide uppercase">Performance Video</span>
                     </div>
                 </a>
             </div>
@@ -561,10 +653,25 @@
         evt.currentTarget.classList.add("active", "text-[#2D5A27]", "border-[#2D5A27]");
         evt.currentTarget.classList.remove("text-gray-500", "border-transparent");
     }
-    // Inisialisasi Fancybox
     Fancybox.bind("[data-fancybox]", {
-        // Opsi kustomisasi jika perlu
-        loop: true,
+        // Memaksa toolbar (tombol close, dll) tetap muncul
+        Toolbar: {
+            display: {
+                left: ["infobar"],
+                middle: [],
+                right: ["iterateZoom", "close"], // Pastikan "close" ada di sini
+            },
+        },
+        // Agar di HP tetap nyaman
+        Images: {
+            Panzoom: {
+                maxScale: 3,
+            },
+        },
+        // Menambahkan tombol X manual di pojok jika toolbar bawaan bermasalah di beberapa device
+        closeButton: "outside", 
+        // Efek transisi
+        showClass: "f-fadeIn",
     });
     // 6. NAVBAR SCROLL EFFECT
     window.addEventListener('scroll', function() {
@@ -579,5 +686,4 @@
     });
     </script>
     </body>
-
 </html>
