@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintya Amanda - Professional MC & Event Planner</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; }
+        /* Warna Utama dari Gambar Rate Card */
+        .bg-forest { background-color: #2D5A27; }
+        .text-rate-yellow { color: #F6E05E; }
+        .bg-rate-yellow { background-color: #F6E05E; }
+        #mainNav { transition: all 0.4s ease-in-out; }
+        /* Swiper Custom */
+        .swiper-button-next, .swiper-button-prev {
+            color: #2D5A27 !important; /* Hijau Tua */
+            background: #F6E05E; /* Kuning Muda */
+            width: 35px !important;
+            height: 35px !important;
+            border-radius: 50%;
+        }
+        .swiper-button-next:after, .swiper-button-prev:after { font-size: 14px !important; }
+        /* Rate Card Tab Active Style */
+        .tab-btn.active {
+            color: #2D5A27; 
+            border-bottom: 2px solid #2D5A27;
+            font-weight: 700;
+        }
+        .rate-card-content { display: none; }
+        .rate-card-content.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .rate-card-bg {
+            background: linear-gradient(rgba(45, 90, 39, 0.8), rgba(45, 90, 39, 0.8)), url('assets/img/ratecard-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 overflow-x-hidden">
+    <nav class="fixed w-full z-50 px-6 py-5 bg-forest" id="mainNav">
+    <div class="container mx-auto flex justify-between items-center relative">
+        <span class="brand text-2xl font-bold text-rate-yellow transition-colors duration-300" id="navBrand">
+            Sintya Amanda
+        </span>
+        <button id="hamburgerBtn" class="md:hidden text-white focus:outline-none">
+            <i class="fas fa-bars text-2xl" id="hamburgerIcon"></i>
+        </button>
+        <div id="navLinks" class="hidden absolute md:static top-full left-0 w-full md:w-auto bg-forest md:bg-transparent flex-col md:flex md:flex-row space-y-4 md:space-y-0 md:space-x-8 p-6 md:p-0 text-sm font-medium uppercase tracking-wider text-white shadow-lg md:shadow-none">
+            <a href="#home" class="nav-item hover:text-rate-yellow transition">Home</a>
+            <a href="#experiences" class="nav-item hover:text-rate-yellow transition">Experiences</a>
+            <a href="#services" class="nav-item hover:text-rate-yellow transition">Services & Packages</a>
+            <a href="#testimonials" class="nav-item hover:text-rate-yellow transition">Testimoni</a>
+            <a href="#contact" class="nav-item hover:text-rate-yellow transition">Contact</a>
+        </div>
+    </div>
+</nav>
+<section id="home" class="relative min-h-screen flex items-center justify-center text-center px-6">
+    <div class="absolute inset-0 z-0">
+        <img src="assets/img/background1.jpg" alt="Background" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-white/40 backdrop-blur-[2px]"></div>
+    </div>
+    <div class="relative z-10 max-w-5xl" data-aos="zoom-out">
+        <h1 class="leading-tight mb-8 text-[#2D5A27]">
+            <span class="block text-7xl md:text-[11rem] font-black italic tracking-tighter leading-[0.85] mb-2">
+                Amanda<span class="text-rose-600"></span>
+            </span>  
+            <span class="block text-xl md:text-3xl font-light uppercase tracking-[0.4em] text-[#1a3317]/80">
+                Official MC
+            </span>
+        </h1>
+        <p class="text-lg md:text-xl text-[#1a1a1a] mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+            Hi Beloved, terima kasih sudah berkunjung. Kami menyediakan berbagai layanan Event Planner dan Professional Public Speaker.
+        </p>
+        <div class="flex flex-wrap justify-center gap-5">
+            <a href="https://wa.me/6285773614188" class="bg-[#2D5A27] text-[#F6E05E] px-10 py-4 rounded-full hover:bg-[#1a3317] transition-all transform hover:scale-105 font-bold shadow-xl">
+                Booking Services
+            </a>
+            <a href="#ratecard" class="border-2 border-[#2D5A27] text-[#2D5A27] px-10 py-4 rounded-full hover:bg-[#2D5A27] hover:text-white transition-all transform hover:scale-105 font-semibold">
+                View Rate Card
+            </a>
+        </div>
+    </div>
+</section>
+<section id="about" class="bg-white py-24 px-6">
+    <div class="container mx-auto flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-12 md:mb-0 relative" data-aos="fade-right">
+            <img src="assets/img/profile-amanda.jpg" alt="Sintya Amanda" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto grayscale hover:grayscale-0 transition duration-700">
+            <div class="absolute -bottom-6 md:right-4 bg-white p-6 shadow-2xl rounded-2xl border-t-4 border-[#2D5A27] flex items-center gap-4">
+                <div class="text-[#2D5A27] text-4xl">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <div>
+                    <span class="block text-4xl font-bold text-[#2D5A27]">250++</span>
+                    <span class="text-xs uppercase tracking-widest font-bold text-gray-500">Event Handled</span>
+                </div>
+            </div>
+        </div>
+        <div class="md:w-1/2 md:pl-20 space-y-6" data-aos="fade-left">
+            <h2 class="text-4xl font-bold text-gray-900 leading-tight">Profile Professional</h2>
+            <p class="text-black text-lg leading-relaxed italic">
+                Halo, saya <span class="font-bold">Sintya Amanda</span> Lulusan Sastra Indonesia yang telah berpengalaman sebagai pembawa acara sejak duduk di bangku sekolah dan fokus 
+                berkarier sebagai <span class="font-bold">MC Wedding sejak 2022</span>. Saya memiliki kemampuan public speaking tersertifikasi dan telah memandu ratusan acara secara 
+                terstruktur, hangat dan khidmat.
+            </p>
+            <div class="grid grid-cols-2 gap-8 pt-6 border-t border-gray-100">
+                <div class="flex flex-col gap-2">
+                    <div class="flex items-center gap-2 text-[#2D5A27]">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4 class="font-bold uppercase text-xs tracking-widest">AKADEMIK</h4>
+                    </div>
+                    <p class="text-sm text-gray-900">S1 Sastra Indonesia<br>IPK: 3,89/4.00</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <div class="flex items-center gap-2 text-[#2D5A27]">
+                        <i class="fas fa-feather-pointed"></i>
+                        <h4 class="font-bold uppercase text-xs tracking-widest">KEAHLIAN</h4>
+                    </div>
+                    <p class="text-sm text-gray-900">Script Writing & Public Relations<br>Spesialis Kidung Sunda</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="experiences" class="py-24 bg-gray-50 px-6">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">Prestasi & Pengalaman</h2> 
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="flex flex-col" data-aos="fade-up">
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-[#2D5A27]/10">
+                    <div class="swiper innerSwiper aspect-square w-full relative">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="assets/img/experiences/1_MC.png" class="w-full h-full object-cover" alt="Forum MC 1"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/2_MC.png" class="w-full h-full object-cover" alt="Forum MC 2"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/3_MC.png" class="w-full h-full object-cover" alt="Forum MC 1"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/4_MC.png" class="w-full h-full object-cover" alt="Forum MC 2"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/5_MC.png" class="w-full h-full object-cover" alt="Forum MC 1"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/6_MC.png" class="w-full h-full object-cover" alt="Forum MC 2"></div>
+                        </div>
+                        <div class="swiper-button-next !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                        <div class="swiper-button-prev !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="p-6 text-center bg-white">
+                        <h3 class="font-bold text-xl text-[#2D5A27]">Forum MC</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-[#2D5A27]/10">
+                    <div class="swiper innerSwiper aspect-square w-full relative">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="assets/img/experiences/Moderator1.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/Moderator2.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/Moderator3.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/Moderator4.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/Moderator5.png" class="w-full h-full object-cover"></div>
+                        </div>
+                        <div class="swiper-button-next !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                        <div class="swiper-button-prev !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="p-6 text-center bg-white">
+                        <h3 class="font-bold text-xl text-[#2D5A27]">Moderator</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-[#2D5A27]/10">
+                    <div class="swiper innerSwiper aspect-square w-full relative">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="assets/img/experiences/Corporate1.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/Corporate2.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/Corporate3.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/Corporate4.png" class="w-full h-full object-cover"></div>
+                        </div>
+                        <div class="swiper-button-next !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                        <div class="swiper-button-prev !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="p-6 text-center bg-white">
+                        <h3 class="font-bold text-xl text-[#2D5A27]">MC Corporate</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-[#2D5A27]/10">
+                    <div class="swiper innerSwiper aspect-square w-full relative">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="assets/img/experiences/Wisuda1.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/Wisuda2.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/Wisuda3.png" class="w-full h-full object-cover"></div>
+                        </div>
+                        <div class="swiper-button-next !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                        <div class="swiper-button-prev !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="p-6 text-center bg-white">
+                        <h3 class="font-bold text-xl text-[#2D5A27]">MC Wisuda</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col" data-aos="fade-up" data-aos-delay="400">
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-[#2D5A27]/10">
+                    <div class="swiper innerSwiper aspect-square w-full relative">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="assets/img/experiences/kompetisi1.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/kompetisi2.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/kompetisi3.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/kompetisi4.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/kompetisi5.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/img/experiences/kompetisi6.png" class="w-full h-full object-cover"></div>
+                        </div>
+                        <div class="swiper-button-next !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                        <div class="swiper-button-prev !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="p-6 text-center bg-white">
+                        <h3 class="font-bold text-xl text-[#2D5A27]">Kompetisi</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="ratecard" class="relative min-h-screen flex items-center rate-card-bg py-24">
+    <div class="absolute inset-0 bg-white/80 backdrop-blur-sm z-0"></div>
+    <div class="container mx-auto relative z-10 px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-16">
+            <div class="bg-green-800 text-[#F6E05E] px-8 py-3 rounded-full flex items-center gap-4 shadow-xl">
+                <span class="font-bold tracking-widest uppercase text-sm">Rate Card</span>
+            </div>
+            <div class="flex justify-center gap-10 text-gray-500 font-bold uppercase text-xs tracking-[0.2em]">
+                <button onclick="openTab(event, 'exclusive')" class="tab-btn active border-b-2 border-[#2D5A27] pb-1 transition-all text-[#2D5A27]">
+                    Exclusive
+                </button>
+                <button onclick="openTab(event, 'mc')" class="tab-btn border-b-2 border-transparent pb-1 transition-all">
+                    MC
+                </button>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="max-w-5xl mx-auto">
+                
+                <div id="exclusive" class="rate-card-content block animate-fadeIn">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <a href="assets/img/pricelist/plexclusive1.png" data-fancybox="exclusive" class="block aspect-[3/4] md:aspect-square overflow-hidden rounded-2xl shadow-2xl border-4 border-white group cursor-zoom-in relative">
+                            <img src="assets/img/pricelist/plexclusive1.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="PL Exclusive 1">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i class="fas fa-search-plus text-white text-3xl"></i>
+                            </div>
+                        </a>
+                        <a href="assets/img/pricelist/plexclusive2.png" data-fancybox="exclusive" class="block aspect-[3/4] md:aspect-square overflow-hidden rounded-2xl shadow-2xl border-4 border-white group cursor-zoom-in relative">
+                            <img src="assets/img/pricelist/plexclusive2.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="PL Exclusive 2">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i class="fas fa-search-plus text-white text-3xl"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div id="mc" class="rate-card-content hidden animate-fadeIn">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="assets/img/pricelist/plmc1.png" data-fancybox="mc-gallery" class="block aspect-[3/4] md:aspect-square overflow-hidden rounded-xl shadow-xl border-2 border-white group cursor-zoom-in relative">
+                            <img src="assets/img/pricelist/plmc1.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="PL MC 1">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i class="fas fa-search-plus text-white text-2xl"></i>
+                            </div>
+                        </a>
+                        <a href="assets/img/pricelist/plmc2.png" data-fancybox="mc-gallery" class="block aspect-[3/4] md:aspect-square overflow-hidden rounded-xl shadow-xl border-2 border-white group cursor-zoom-in relative">
+                            <img src="assets/img/pricelist/plmc2.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="PL MC 2">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+                        </a>
+                        <a href="assets/img/pricelist/plmc3.png" data-fancybox="mc-gallery" class="block aspect-[3/4] md:aspect-square overflow-hidden rounded-xl shadow-xl border-2 border-white group cursor-zoom-in relative">
+                            <img src="assets/img/pricelist/plmc3.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="PL MC 3">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+                        </a>
+                        <a href="assets/img/pricelist/plmc4.png" data-fancybox="mc-gallery" class="block aspect-[3/4] md:aspect-square overflow-hidden rounded-xl shadow-xl border-2 border-white group cursor-zoom-in relative">
+                            <img src="assets/img/pricelist/plmc4.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="PL MC 4">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+                        </a>
+                        <a href="assets/img/pricelist/plmc5.png" data-fancybox="mc-gallery" class="block aspect-[3/4] md:aspect-square overflow-hidden rounded-xl shadow-xl border-2 border-white group cursor-zoom-in relative">
+                            <img src="assets/img/pricelist/plmc5.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="PL MC 5">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="services" class="py-24 bg-gray-50 px-6">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16 text-[#2D5A27]" data-aos="fade-up">Services & Packages</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start max-w-5xl mx-auto">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-[#2D5A27]/5 hover:shadow-2xl transition-all duration-300" data-aos="fade-up">
+                <div class="swiper innerSwiper aspect-square relative">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="assets/img/services/wedding 1.png" class="w-full h-full object-cover" alt="Wedding 1"></div>
+                        <div class="swiper-slide"><img src="assets/img/services/wedding 2.png" class="w-full h-full object-cover" alt="Wedding 2"></div>
+                        <div class="swiper-slide"><img src="assets/img/services/wedding 3.png" class="w-full h-full object-cover" alt="Wedding 3"></div>
+                        <div class="swiper-slide"><img src="assets/img/services/wedding 4.png" class="w-full h-full object-cover" alt="Wedding 4"></div>
+                        <div class="swiper-slide"><img src="assets/img/services/wedding 5.png" class="w-full h-full object-cover" alt="Wedding 5"></div>
+                    </div>
+                    <div class="swiper-button-next !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                    <div class="swiper-button-prev !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                </div>
+                <div class="p-8">
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">MC</h3>
+                    <p class="text-[#2D5A27] text-sm font-bold mb-4 uppercase tracking-widest">Master of Ceremony</p>
+                    <hr class="mb-5 border-gray-100">
+                    <a href="https://instagram.com/amandamc.official" target="_blank" class="flex items-center justify-center gap-3 bg-[#2D5A27] text-[#F6E05E] py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-[#1a3317] transition-colors shadow-md">
+                        <i class="fab fa-instagram text-lg"></i> Video Performance
+                    </a>
+                </div>
+            </div>
+            <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-[#2D5A27]/5 hover:shadow-2xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper innerSwiper aspect-square relative">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="assets/img/services/bouqet1.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="assets/img/services/bouqet2.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="assets/img/services/bouqet3.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="assets/img/services/bouqet4.png" class="w-full h-full object-cover"></div>
+                    </div>
+                    <div class="swiper-button-next !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                    <div class="swiper-button-prev !bg-[#2D5A27] !text-[#F6E05E] !rounded-full !w-8 !h-8 !after:text-[10px]"></div>
+                </div>
+                <div class="p-8">
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">BOUQUET & GIFT</h3>
+                    <p class="text-[#2D5A27] text-sm font-bold mb-4 uppercase tracking-widest">Custom Gift & Hamper</p>
+                    <hr class="mb-5 border-gray-100">
+                    <div class="grid grid-cols-1 gap-3">
+                        <a href="https://instagram.com/bouqetnumana_katalog" target="_blank" class="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:opacity-90 transition-all shadow-md">
+                            <i class="fab fa-instagram text-lg"></i> Catalog Produk
+                        </a>
+                        <a href="https://wa.me/6285773614188?text=Halo%20Sintya,%20saya%20tertarik%20dengan%20layanan%20Bouquet%20dan%20Gift-nya." target="_blank" class="flex items-center justify-center gap-3 bg-[#2D5A27] text-[#F6E05E] py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-[#1a3317] transition-colors shadow-md">
+                            <i class="fab fa-whatsapp text-lg"></i> Order Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="testimonials" class="py-24 bg-white px-6">
+    <div class="container mx-auto">
+        <div class="flex justify-center mb-20" data-aos="fade-up">
+            <div class="bg-[#2D5A27] text-[#F6E05E] px-10 py-4 rounded-full flex items-center gap-4 shadow-xl border border-[#F6E05E]/20">
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Client Stories</h2>
+                <div class="bg-white/10 p-2 rounded-full">
+                    <i class="fas fa-comment-dots text-2xl text-[#F6E05E]"></i>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col items-center" data-aos="fade-up">  
+                <div class="relative mb-8">
+                    <div class="w-32 h-32 bg-[#2D5A27] rounded-full flex items-center justify-center shadow-2xl border-4 border-[#F6E05E]/30 relative">
+                        <div class="absolute inset-0 rounded-full border border-[#F6E05E] animate-ping opacity-20"></div>
+                        <i class="fas fa-microphone-alt text-5xl text-[#F6E05E]"></i>
+                    </div>
+                </div>
+                <div class="bg-[#2D5A27]/5 rounded-full px-8 py-2 mb-10 border border-[#2D5A27]/10 shadow-sm">
+                    <span class="text-[#2D5A27] font-bold uppercase text-xs tracking-[0.2em]">Master of Ceremony Testimonials</span>
+                </div>
+                <div class="w-full max-w-[500px] relative">
+                    <div class="swiper innerSwiper rounded-[2rem] shadow-2xl border-[6px] border-[#2D5A27] overflow-hidden bg-gray-50">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni1.png" class="w-full h-auto block" alt="Testimoni MC"></div>
+                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni2.png" class="w-full h-auto block" alt="Testimoni MC"></div>
+                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni3.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
+                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni4.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
+                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni5.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
+                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni6.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
+                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni7.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
+                            <div class="swiper-slide"><img src="assets/img/testimoni/testimoni8.jpg" class="w-full h-auto block" alt="Testimoni MC"></div>
+                        </div>
+                        <div class="swiper-button-next !text-white !scale-75 bg-[#2D5A27]/50 hover:bg-[#2D5A27] rounded-full !w-10 !h-10 !after:text-sm transition-all"></div>
+                        <div class="swiper-button-prev !text-white !scale-75 bg-[#2D5A27]/50 hover:bg-[#2D5A27] rounded-full !w-10 !h-10 !after:text-sm transition-all"></div>
+                        <div class="swiper-pagination !-bottom-2"></div>
+                    </div>
+                </div>
+                <a href="https://www.youtube.com/shorts/P-Leedf-_eU" target="_blank" class="mt-12 flex items-center gap-4 group bg-gray-50 px-6 py-3 rounded-2xl hover:bg-gray-100 transition-all">
+                    <div class="w-12 h-12 bg-[#2D5A27] text-[#F6E05E] rounded-full flex items-center justify-center group-hover:scale-110 transition shadow-lg">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Watch on YouTube</span>
+                        <span class="text-sm font-bold text-[#2D5A27] tracking-wide">VIDEO PERFORMANCE & REVIEW</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="contact" class="bg-[#1a3317] text-white pt-24 pb-12 px-6 md:px-12 border-t border-[#2D5A27]">
+    <div class="max-w-[1400px] mx-auto">     
+        <div class="flex flex-col lg:flex-row justify-between items-start gap-16 pb-20">
+            <div class="w-full lg:w-1/2 space-y-10" data-aos="fade-right">
+                <div>
+                    <h3 class="brand text-5xl md:text-6xl mb-6 italic text-[#F6E05E]">Sintya Amanda</h3>
+                    <p class="text-gray-300 max-w-md leading-relaxed text-base">
+                        Menyediakan layanan Professional Public Speaker dan Event Planner yang berfokus pada kualitas dan kepuasan klien.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-x-10 gap-y-6">
+                    <a href="https://instagram.com/sintyaamandaaa_" target="_blank" class="flex items-center gap-3 group transition">
+                        <i class="fab fa-instagram text-2xl text-gray-400 group-hover:text-[#F6E05E] transition"></i>
+                        <span class="text-[11px] font-bold tracking-[0.2em] uppercase group-hover:text-[#F6E05E]">Instagram</span>
+                    </a>
+                    <a href="https://wa.me/6285773614188" target="_blank" class="flex items-center gap-3 group transition">
+                        <i class="fab fa-whatsapp text-2xl text-gray-400 group-hover:text-[#F6E05E] transition"></i>
+                        <span class="text-[11px] font-bold tracking-[0.2em] uppercase group-hover:text-[#F6E05E]">WhatsApp</span>
+                    </a>
+                    <a href="https://youtube.com/@heyitsmandaaa" target="_blank" class="flex items-center gap-3 group transition">
+                        <i class="fab fa-youtube text-2xl text-gray-400 group-hover:text-[#F6E05E] transition"></i>
+                        <span class="text-[11px] font-bold tracking-[0.2em] uppercase group-hover:text-[#F6E05E]">YouTube</span>
+                    </a>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 flex flex-col lg:items-end gap-16" data-aos="fade-left">
+                
+                <div class="flex flex-wrap gap-4 lg:justify-end">
+                    <a href="https://instagram.com/amandamc.official" target="_blank" class="px-8 py-3 border border-gray-500 rounded-full text-[12px] font-bold uppercase tracking-widest hover:bg-[#F6E05E] hover:text-[#1a3317] hover:border-[#F6E05E] transition duration-300">
+                        Master of Ceremony
+                    </a>
+                    <a href="https://instagram.com/bouqetnumana_katalog" target="_blank" class="px-8 py-3 border border-gray-500 rounded-full text-[12px] font-bold uppercase tracking-widest hover:bg-[#F6E05E] hover:text-[#1a3317] hover:border-[#F6E05E] transition duration-300">
+                        Bouquet & Gift
+                    </a>
+                </div>
+                <div class="space-y-6 w-full lg:w-auto">
+                    <div class="flex items-center lg:justify-end gap-5 group cursor-pointer">
+                        <span class="text-base font-light text-gray-300 group-hover:text-[#F6E05E] transition">amandamcofficial@gmail.com</span>
+                        <div class="w-12 h-12 border border-[#2D5A27] rounded-full flex items-center justify-center text-[#F6E05E] group-hover:bg-[#2D5A27] transition">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center lg:justify-end gap-5 group cursor-pointer">
+                        <span class="text-base font-light text-gray-300 group-hover:text-[#F6E05E] transition text-left lg:text-right">
+                            Pamulang, Tangerang Selatan
+                        </span>
+                        <div class="w-12 h-12 border border-[#2D5A27] rounded-full flex items-center justify-center text-[#F6E05E] group-hover:bg-[#2D5A27] transition">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pt-10 border-t border-[#2D5A27]/30 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-[11px] text-gray-500 tracking-[0.3em] uppercase text-center md:text-left">
+                &copy; 2026 Sintya Amanda. All Rights Reserved.
+            </p>
+            <div class="flex gap-8">
+                <a href="#home" class="text-[11px] text-gray-500 hover:text-[#F6E05E] uppercase tracking-widest transition-all hover:tracking-[0.4em]">Back to Top</a>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+    // 1. PRELOADER LOGIC
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        if(preloader) {
+            preloader.classList.add('opacity-0');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 700); 
+        }
+    });
+    // 2. ANIMASI SCROLL
+    AOS.init({ 
+        duration: 1000, 
+        once: true,
+        offset: 100 
+    });
+    // 3. MOBILE MENU LOGIC
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+    const allNavLinks = document.querySelectorAll('.nav-item');
+    if(hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('flex'); 
+            if (navLinks.classList.contains('hidden')) {
+                hamburgerIcon.classList.replace('fa-times', 'fa-bars');
+                document.body.classList.remove('overflow-hidden');
+            } else {
+                hamburgerIcon.classList.replace('fa-bars', 'fa-times');
+                document.body.classList.add('overflow-hidden');
+            }
+        });
+    }
+    allNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) { 
+                navLinks.classList.add('hidden');
+                navLinks.classList.remove('flex');
+                hamburgerIcon.classList.replace('fa-times', 'fa-bars');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+    });
+    // 4. INISIALISASI SWIPER (ADAPTIVE FOR TESTIMONI & OTHERS)
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.innerSwiper').forEach((el) => {
+            new Swiper(el, {
+                loop: true,
+                grabCursor: true,
+                speed: 800,
+                autoHeight: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: el.querySelector('.swiper-button-next'),
+                    prevEl: el.querySelector('.swiper-button-prev'),
+                },
+                pagination: {
+                    el: el.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+                observer: true,
+                observeParents: true,
+            });
+        });
+    });
+    // 5. FUNGSI TAB RATE CARD
+    function openTab(evt, tabName) {
+        const tabcontent = document.getElementsByClassName("rate-card-content");
+        for (let i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.add("hidden");
+            tabcontent[i].classList.remove("block");
+        }
+        const tablinks = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active", "text-[#2D5A27]", "border-[#2D5A27]");
+            tablinks[i].classList.add("text-gray-500", "border-transparent");
+        }
+        const targetTab = document.getElementById(tabName);
+        if(targetTab) {
+            targetTab.classList.remove("hidden");
+            targetTab.classList.add("block");
+            AOS.refresh(); // Animasi ulang saat ganti tab
+        }
+        evt.currentTarget.classList.add("active", "text-[#2D5A27]", "border-[#2D5A27]");
+        evt.currentTarget.classList.remove("text-gray-500", "border-transparent");
+    }
+    // Inisialisasi Fancybox
+    Fancybox.bind("[data-fancybox]", {
+        // Opsi kustomisasi jika perlu
+        loop: true,
+    });
+    // 6. NAVBAR SCROLL EFFECT
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('mainNav');
+        if (nav) {
+            if (window.scrollY > 80) {
+                nav.classList.add('nav-scrolled', 'shadow-lg');
+            } else {
+                nav.classList.remove('nav-scrolled', 'shadow-lg');
+            }
+        }
+    });
+    </script>
+    </body>
+</html>
